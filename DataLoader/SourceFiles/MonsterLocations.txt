@@ -1,0 +1,260 @@
+﻿------------------------------------------------------------------------------------------------------------------------------
+--										TRAVELER'S GATES																	--
+------------------------------------------------------------------------------------------------------------------------------
+Beginner (Depth 5; Max Size 3x3; Boss Healer)
+   1-4   Dracky     Slime      Anteater
+   5 	  Healer
+
+Villager (Depth 5; Max Size 3x3; Boss Dragon)
+   1-2   Stubsuck   GoHopper   Anteater   Picky
+   3-4   Stubsuck   GoHopper   Gremlin    PillowRat
+   5	  Dragon
+
+Talisman (Depth 6; Max Size 3x3; Boss Golem)
+   1-2   Spooky     ArmyAnt    Anteater   Minidrak
+   3-5   Spooky     Goopi      ArmyAnt    Picky
+   6	  Golem
+
+Memories (Depth 5; Max Size 3x3; Boss MadCat)
+   1-2   Goopi      PillowRat  DragonKid  Catapila
+   3-4   Picky      FairyRat   Catapila   SpotSlime
+   5	  MadCat
+
+Bewilder (Depth 6; Max Size 3x3; Boss FaceTree)
+   1-2   Minidrak   BigRoost   DragonKid  SpotSlime
+   3-5   EvilSeed   Demonite   SpotSlime  Crestpent
+   6	  FaceTree
+
+Bazaar #1 (Depth 9; Max Size 2x2; Boss MadKnight)
+   1-2   FairyRat   BigRoost   SpotSlime  Crestpent
+   3-5   BigRoost   DragonKid  Catapila   BeanMan
+   6-8   Demonite   Catapila   Hork       1EyeClown
+   9	  MadKnight
+
+Peace (Depth 8; Max Size 4x4; Boss FangSlime)
+   1-3   BigRoost   SpotSlime  CoilBird   Crestpent
+   4-5   DragonKid  Crestpent  BoneSlave  Almiraj
+   6-7   Hork       Crestpent  Almiraj    BullBird
+   8	  FangSlime
+
+Bravery (Depth 9; Max Size 4x4; Boss BigEye)
+   1-3   Demonite   BeanMan    1EyeClown  FloraMan
+   4-5   BeanMan    FloraMan   SabreMan   GiantWorm
+   6-8   BeanMan    FloraMan   GiantWorm  BullBird
+
+Well (Depth 12; Max Size 2x2; Boss Gigantes)
+   1-3   BoneSlave  Almiraj    FloraMan   GiantSlug
+   4-5   Almiraj    TreeSlime  FloraMan   GiantSlug
+   6-8   GiantWorm  BullBird   FloraMan   MudDoll
+   9-11  BullBird   SabreMan   FloraMan   MudDoll    Metaly
+   12	  Gigantes
+
+Strength (Depth 11; Max Size 4x4; Boss StoneMan)
+   1-3   MudDoll    TreeSlime  SkulRider  FairyDrak
+   4-5   MudDoll    SkulRider  FairyDrak  WingTree
+   6-8   TreeSlime  SkulRider  WingTree   DrakSlime
+   9-10  TreeSlime  WingTree   FairyDrak  DrakSlime
+
+Anger (Depth 11; Max Size 4x4; Boss BattleRex)
+   1-3   GiantWorm  GiantSlug  Poisongon  Catfly
+   4-5   GiantSlug  Poisongon  Catfly     Eyeder
+   6-8   Catfly     Poisongon  Eyeder     Putrepup
+   9-10  Catfly     Eyeder     Putrepup   DrakSlime
+   11	  BattleRex
+
+Monster Farm (Depth 12; Max Size 2x2; Boss Copycat)
+   1-3   FairyDrak  Butterfly  MadRaven   Skullroo
+   4-5   FairyDrak  MadRaven   Skullroo   Mudron
+   6-8   DrakSlime  MadRaven   Skullroo   Facer
+   9-11  DrakSlime  Skullroo   Mudron     Facer
+   12	  Copycat
+
+Joy (Depth 14; Max Size 4x4; Boss FunkyBird)
+   1-3   Snaily     Saccer     Gulpple    MadPecker
+   4-5   Snaily     Saccer     Gulpple    MadPecker
+   6-8   Saccer     Gulpple    EyeBall    MadPecker
+   9-12  Saccer     EyeBall    Babble     Mummy
+    13   Babble     EyeBall    MadPecker  Mummy
+	14   FunkyBird
+
+Wisdom (Depth 15; Max Size 4x4; Boss SkyDragon)
+   1-2   Facer      Tonguella  FloraJay   Pteranod
+   3-5   Facer      Tonguella  FloraJay   Pteranod
+   6-14  Tonguella  FloraJay   Pteranod   ArmorPede
+   ????  Tonguella  Pteranod   MadPlant   ArmorPede
+   ????  Pteranod   MadPlant   MedusaEye  ArmorPede
+
+Goopi #2 (Depth 16; Max Size 2x2; Boss Digster)
+   1-3   WingSlime  MadCandle  MedusaEye  MadGopher
+   4-5   WingSlime  MadCandle  MedusaEye  MadGopher
+   6-8   MadCandle  MedusaEye  MadGopher  Slabbit
+   9-12  MadCandle  MadGopher  WindBeast  Slabbit
+  13-15  MadGopher  WindBeast  Slabbit    Gasgon
+  16	  Digster
+
+Happiness (Depth 18; Max Size 4x4; Boss Jamirus)
+   1-4   Oniono     Gophecada  Pixy       Gasgon
+   5-8   Oniono     Gophecada  Pixy       DeadNite
+   9-12  Oniono     Gophecada  Pixy       DeadNite
+  13-16  Gophecada  Pixy       DeadNite   StubBird
+    17   Gophecada  DeadNite   SpikyBoy   StubBird
+
+Temptation (Depth 20; Max Size 4x4; Boss Servant)
+   1-4   SpikyBoy   KingCobra  Mommonja   SlimeNite
+   5-8   SpikyBoy   KingCobra  Mommonja   SlimeNite
+   9-12  KingCobra  Mommonja   SlimeNite  StagBug
+  13-16  KingCobra  SlimeNite  MistyWing  StagBug
+  17-19  SlimeNite  MistyWing  DarkEye    StagBug
+  20	  Servant
+
+Medal Man (Depth 19; Max Size 2x2; Boss KingSlime)
+   1-3   NiteWhip   BoxSlime   Gismo      Orc
+   4-5   NiteWhip   BoxSlime   Gismo      Orc
+   6-8   BoxSlime   Gismo      Orc        RogueNite
+   9-18  BoxSlime   Orc        Reaper     RogueNite
+   19	  KingSlime  Lipsy      Toadstool
+
+Labyrinth (Depth 23; Max Size 4x4; Boss DarkHorn)
+   1-5   RockSlime  Chamelgon  Cactiball  TailEater  Gismo
+   6-10  RockSlime  DuckKite   Cactiball  TailEater  Gismo
+  11-15  RockSlime  DuckKite   Cactiball  Gismo      AgDevil
+  16-20  RockSlime  DuckKite   TailEater  Gismo      AgDevil
+  21-22  RockSlime  DuckKite   Gismo      AgDevil    WindMerge
+  23	  DarkHorn
+
+Judgement (Depth 25; Max Size 4x4; Boss Akubar)
+   1-5   WeedBug    HammerMan  MadGoose   TreeBoy    SpotKing
+   6-10  HammerMan  MadGoose   TreeBoy    Droll      SpotKing
+  11-15  HammerMan  TreeBoy    Droll      SpotKing   LizardFly
+  16-20  HammerMan  TreeBoy    GiantMoth  SpotKing   LizardFly
+  21-24  HammerMan  MadGoose   GiantMoth  SpotKing   LizardFly
+
+Library (Depth 25; Max Size 2x2; Boss Orochi)
+   1-5   ArcDemon   CurseLamp  AmberWeed  ArmyCrab   MadSpirit
+   6-10  ArcDemon   CurseLamp  WildApe    ArmyCrab   MadSpirit
+  11-15  ArcDemon   CurseLamp  WildApe    ArmyCrab   Tortragon
+  16-20  ArcDemon   MadSpirit  WildApe    ArmyCrab   Tortragon
+  21-24  ArcDemon   MadSpirit  Tortragon  WildApe    LandOwl
+
+Reflection (Depth 29; Max Size 4x4; Boss Durran)
+   1-5   EvilBeast  Shadow     EvilWand   Slimeborg  LizardMan
+   6-10  EvilBeast  Shadow     Slimeborg  LizardMan  Grizzly
+  11-15  LizardMan  Slimeborg  Wyvern     FireWeed   Grizzly
+  16-20  LizardMan  Wyvern     MadHornet  Lionex     Grizzly
+  21-25  Wyvern     MadHornet  Lionex     RotRaven   Grizzly
+  26-28  Grizzly    MadHornet  Lionex     RotRaven   JewelBag
+
+Ambition (Depth 30; Max Size 4x4; Boss DracoLord1)
+   1-5   GoHopper   ArmyAnt    Catapila   GiantWorm
+   6-10  GiantSlug  Eyeder     Butterfly  ArmorPede
+  11-20  Gophecada  StagBug    TailEater  WeedBug
+  21-29  Droll      GiantMoth  ArmyCrab   MadHornet
+
+Demolition (Depth 29; Max Size 4x4; Boss Hargon/Sidoh)
+   1-5   Stubsuck   EvilSeed   BeanMan    FloraMan
+   6-10  WingTree   Gulpple    MadPlant   Oniono
+  11-20  Cactiball  TreeBoy    AmberWeed  FireWeed
+  21-28  FireWeed   ManEater   DanceVegi  Snapper
+
+Mastermind (Depth 27; Max Size 4x4; Boss Baramos)
+   1-5   Dracky     Picky      BigRoost   BullBird
+   6-10  MadRaven   MadPecker  FloraJay   StubBird
+  11-20  MistyWing  DuckKite   MadGoose   LandOwl
+  21-26  Wyvern     MadCondor  ZapBird    WhipBird
+
+Control (Depth 30; Max Size 4x4; Boss Zoma)
+   1-5   Slime      SpotSlime  Metaly     TreeSlime
+   6-10  DrakSlime  Snaily     Babble     WingSlime
+  11-20  Slabbit    SlimeNite  BoxSlime   RockSlime
+  21-29  RockSlime  SpotKing   Slimeborg  Metabble
+
+Extinction (Depth 30; Max Size 4x4; Boss Pizzaro)
+   1-5   Gremlin    Demonite   1EyeClown  SkulRider
+   6-10  EyeBall    MedusaEye  Pixy       DarkEye
+  11-20  Orc        AgDevil    ArcDemon   EvilBeast
+  21-29  Lionex     Grendal    Ogre       GoatHorn
+
+Sleep (Depth 30; Max Size 4x4; Boss Esterk)
+   1-5   Spooky     Hork       BoneSlave  Putrepup
+   6-10  Mudron     Mummy      DeadNite   NiteWhip
+  11-20  Reaper     WindMerge  MadSpirit  Shadow
+  21-29  RotRaven   DarkCrab   Skullgon   Skeletor   DeadNoble
+
+Bazaar #2 (Depth 30; Max Size 4x4; Boss Mirudraas1)
+   1-5   Goopi      SabreMan   CoilBird   MudDoll
+   6-10  Facer      MadCandle  SpikyBoy   RogueNite
+  11-20  Gismo      CurseLamp  EvilWand   JewelBag   MadMirror
+  21-29  Voodoll    Balzak     MetalDrak  Roboster   BombCrag
+
+Goopi #3 (Depth 27; Max Size 4x4; Boss Mudou)
+   1-5   PillowRat  FairyRat   Almiraj    Catfly     Skullroo
+   6-10  Saccer     Tonguella  MadGopher  WindBeast  Mommonja
+  11-20  Goategon   HammerMan  WildApe    Grizzly    SuperTen
+  21-26  Yeti       IronTurt   GulpBeast  Trumpeter  Unicorn
+
+Old Man (Depth 30; Max Size 4x4; Boss DeathMore1)
+   1-5   Minidrak   DragonKid  Crestpent  Poisongon
+   6-10  FairyDrak  Pteranod   Gasgon     KingCobra  Chamelgon
+  11-20  LizardFly  Tortragon  LizardMan  Swordgon   WingSnake
+  21-29  Rayburn    Spikerous  MadDragon  Andreal    GreatDrak
+
+Inaccessible (Depth 99; Max Size 4x4; Boss UNKNOWN (DarkDrium?))
+   1-5   Skeletor   Trumpeter  MetalDrak  MadDragon
+   6-10  MetalDrak  MadDragon  Snapper    GoatHorn
+  11-20  Snapper    GoatHorn   DeadNoble  Roboster
+  21-40  DeadNoble  Roboster   BombCrag   Andreal
+  41-60  BombCrag   Andreal    Unicorn    GreatDrak
+  61-80  Unicorn    GreatDrak  ZapBird    WhipBird
+  81-98  ZapBird    WhipBird   Metaly     Metabble
+
+
+------------------------------------------------------------------------------------------------------------------------------
+--										FOREIGN MASTER TEAMS																--
+------------------------------------------------------------------------------------------------------------------------------
+Team Levels 1-18
+  HammerMan  Goategon   StagBug    SpotKing
+  LizardFly  DuckKite   DarkEye    Cactiball
+  Snapper    Reaper     MistyWing  Gasgon
+  SlimeNite  TailEater  TreeBoy    AgDevil
+
+Team Levels 19-38
+  Wyvern     AmberWeed  ArcDemon   IceMan
+  Slimeborg  ArmyCrab   Shadow     LizardMan
+  MadHornet  FireWeed   WindMerge  Orc
+  Droll      Phoenix    GiantMoth  Grizzly
+
+Team Levels 39-58
+  WildApe    Blizzardy  EvilWand   LavaMan
+  CurseLamp  MadSpirit  Gismo      DeadNite
+  RogueNite  KingCobra  Phoenix    Dragon
+  Metaly     LandOwl    EvilBeast  Lipsy
+
+Team Levels 59-78
+  Lionex     Rayburn    ManEater   RotRaven
+  Ogre       IronTurt   Copycat    DarkCrab
+  WingSnake  DanceVegi  Grendal    JewelBag
+  Phoenix    Goategon   FaceTree   Swordgon
+
+Team Levels 79-98
+  SuperTen   MadMirror  Yeti       Skullgon
+  Centasaur  EvilArmor  Voodoll    Golem
+  LavaMan    Blizzardy   MadCat     StoneMan
+  BigEye     Metaly     Gasgon     Gigantes
+
+Team Levels 99-118
+  Skeletor   Snapper    LavaMan    Phoenix
+  KingSlime  MadPecker  BombCrag   FangSlime
+  ZapBird    Spikerous  Centasaur  BombCrag
+  SkyDragon  BattleRex  FunkyBird  StoneMan
+
+Team Levels 119-138
+  GulpBeast  GreatDrak  Trumpeter  MetalDrak
+  ZapBird    WhipBird   Metabble   Balzak
+  MadDragon  GoatHorn   DeadNoble  Roboster
+  Andreal    Unicorn    Digster    Copycat
+
+Team Levels 139+
+  GreatDrak  Roboster   Balzak     WhipBird
+  MetalDrak  GateGuard  ChopClown  MetalKing
+  Orochi     Trumpeter  Snapper    HornBeet
+  DeadNoble  Servant    StoneMan   BombCrag

@@ -1,0 +1,12 @@
+E:\Git\DWMBestiary\DataLayers\DWM.Models\bin\Debug\net6.0\DWM.Models.deps.json
+E:\Git\DWMBestiary\DataLayers\DWM.Models\bin\Debug\net6.0\DWM.Models.dll
+E:\Git\DWMBestiary\DataLayers\DWM.Models\bin\Debug\net6.0\DWM.Models.pdb
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\DWM.Models.csproj.AssemblyReference.cache
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\DWM.Models.GeneratedMSBuildEditorConfig.editorconfig
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\DWM.Models.AssemblyInfoInputs.cache
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\DWM.Models.AssemblyInfo.cs
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\DWM.Models.csproj.CoreCompileInputs.cache
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\DWM.Models.dll
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\refint\DWM.Models.dll
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\DWM.Models.pdb
+E:\Git\DWMBestiary\DataLayers\DWM.Models\obj\Debug\net6.0\ref\DWM.Models.dll

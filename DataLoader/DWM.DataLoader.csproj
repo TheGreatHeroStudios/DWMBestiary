@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SourceFiles\DWMBestiary.db3" />
+    <None Remove="SourceFiles\DWMBreeding.html" />
+    <None Remove="SourceFiles\GrowthTable.txt" />
+    <None Remove="SourceFiles\MonsterLocations.txt" />
+    <None Remove="SourceFiles\MonsterStatistics.txt" />
+    <None Remove="SourceFiles\RecruitmentLevels.txt" />
+    <None Remove="SourceFiles\Skills.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SourceFiles\DWMBestiary.db3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SourceFiles\DWMBreeding.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SourceFiles\GrowthTable.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SourceFiles\MonsterLocations.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SourceFiles\MonsterStatistics.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SourceFiles\RecruitmentLevels.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SourceFiles\Skills.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonLibrary\TGH.Common.Utilities\TGH.Common.Utilities.csproj" />
+    <ProjectReference Include="..\DataLayers\DWM.Models\DWM.Models.csproj" />
+    <ProjectReference Include="..\DataLayers\DWM.Persistence\DWM.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

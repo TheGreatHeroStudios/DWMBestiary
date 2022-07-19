@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DWM.DataLoader": {
+      "commandName": "Project",
+      "commandLineArgs": "-w -r"
+    }
+  }
+}

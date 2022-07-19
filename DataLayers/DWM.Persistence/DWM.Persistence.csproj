@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\SQLScripts\**" />
+    <Compile Remove="Scripts\**" />
+    <EmbeddedResource Remove="Migrations\SQLScripts\**" />
+    <EmbeddedResource Remove="Scripts\**" />
+    <None Remove="Migrations\SQLScripts\**" />
+    <None Remove="Scripts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CommonLibrary\TGH.Common.Persistence\TGH.Common.Persistence.csproj" />
+    <ProjectReference Include="..\DWM.Models\DWM.Models.csproj" />
+  </ItemGroup>
+
+</Project>
