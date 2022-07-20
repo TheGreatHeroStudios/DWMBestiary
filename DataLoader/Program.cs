@@ -1,10 +1,12 @@
 ﻿using DWM.DataLoader.DataLoaders;
 using DWM.Models;
 using DWM.Persistence;
+using TGH.Common;
 using TGH.Common.Patterns.IoC;
 using TGH.Common.Persistence.Interfaces;
 using TGH.Common.Repository.Implementations;
 using TGH.Common.Repository.Interfaces;
+using TGH.Common.Utilities.CodeGen;
 using TGH.Common.Utilities.Logging;
 using TGH.Common.Utilities.Logging.Providers;
 
@@ -14,6 +16,11 @@ const string LOG_FILE_NAME = "DataLoaderLog.txt";
 const int BUFFER_HEIGHT = Int16.MaxValue - 1;
 const int CONSOLE_WIDTH = 100;
 const string DATA_LOADER_APP_NAME = "DWM Bestiary Data Loader";
+const string CODE_ENUM_NAMESPACE = "DWM.Models.Enums";
+
+//File Path(s)
+string CODE_TABLE_FILEPATH =
+	$@"{FileConstants.EXECUTABLE_DIRECTORY}\SourceFiles\DWMCodeTableGen.sql";
 
 //Info Message(s)
 const string INFO_BEGIN_DB_REBUILD = "Beginning Re-build of Sqlite Database...";
@@ -64,6 +71,14 @@ try
 
 	ReadDataIntoMemory();
 	LoadDatabase();
+
+	/*EnumToCodeTableSqlGenerator
+		.GenerateCodeTableSql
+		(
+			CODE_ENUM_NAMESPACE,
+			CODE_TABLE_FILEPATH,
+			tablePrefix: "C_"
+		);*/
 }
 catch(Exception ex)
 {
