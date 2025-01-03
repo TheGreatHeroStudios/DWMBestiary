@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD3CB60B-0F7F-40B3-99C2-7DA4D7451B6A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataLayers", "DataLayers", "{552AD9A4-7DCE-4505-A913-92C3A0C16495}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{607A326E-58BB-42C3-84E7-037FCAE6773D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MigrationScripts", "MigrationScripts", "{F2E9E57E-1EF6-4D5F-801D-22E7150CD617}"
+	ProjectSection(SolutionItems) = preProject
+		..\MigrationScripts\InitialMigration.sql = ..\MigrationScripts\InitialMigration.sql
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TGH.Common.Patterns", "..\..\CommonLibrary\TGH.Common.Patterns\TGH.Common.Patterns.csproj", "{DA274451-71A6-4455-8C7C-D73EC3176A91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TGH.Common.Persistence", "..\..\CommonLibrary\TGH.Common.Persistence\TGH.Common.Persistence.csproj", "{4075E0AE-3CBA-444C-9843-C07445F5B60C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TGH.Common.Utilities", "..\..\CommonLibrary\TGH.Common.Utilities\TGH.Common.Utilities.csproj", "{E451BF61-55F0-4063-AD65-C85B0B89B8B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DWM.Models", "..\DataLayers\DWM.Models\DWM.Models.csproj", "{A5451A1E-3BA4-4875-950A-ECA5B0002802}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DWM.Persistence", "..\DataLayers\DWM.Persistence\DWM.Persistence.csproj", "{E861D061-EE08-48DA-B48C-219437F7C575}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DWM.DataLoader", "DWM.DataLoader.csproj", "{A622E39D-16E1-44EA-8508-F7D7DAB5F0A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TGH.Common.Repository", "..\..\CommonLibrary\TGH.Common.Repository\TGH.Common.Repository.csproj", "{ADD62619-8A07-4A11-A715-4B0ADF827DF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA274451-71A6-4455-8C7C-D73EC3176A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA274451-71A6-4455-8C7C-D73EC3176A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA274451-71A6-4455-8C7C-D73EC3176A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA274451-71A6-4455-8C7C-D73EC3176A91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4075E0AE-3CBA-444C-9843-C07445F5B60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4075E0AE-3CBA-444C-9843-C07445F5B60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4075E0AE-3CBA-444C-9843-C07445F5B60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4075E0AE-3CBA-444C-9843-C07445F5B60C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E451BF61-55F0-4063-AD65-C85B0B89B8B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E451BF61-55F0-4063-AD65-C85B0B89B8B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E451BF61-55F0-4063-AD65-C85B0B89B8B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E451BF61-55F0-4063-AD65-C85B0B89B8B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5451A1E-3BA4-4875-950A-ECA5B0002802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5451A1E-3BA4-4875-950A-ECA5B0002802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5451A1E-3BA4-4875-950A-ECA5B0002802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5451A1E-3BA4-4875-950A-ECA5B0002802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E861D061-EE08-48DA-B48C-219437F7C575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E861D061-EE08-48DA-B48C-219437F7C575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E861D061-EE08-48DA-B48C-219437F7C575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E861D061-EE08-48DA-B48C-219437F7C575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A622E39D-16E1-44EA-8508-F7D7DAB5F0A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A622E39D-16E1-44EA-8508-F7D7DAB5F0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A622E39D-16E1-44EA-8508-F7D7DAB5F0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A622E39D-16E1-44EA-8508-F7D7DAB5F0A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD62619-8A07-4A11-A715-4B0ADF827DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD62619-8A07-4A11-A715-4B0ADF827DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD62619-8A07-4A11-A715-4B0ADF827DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD62619-8A07-4A11-A715-4B0ADF827DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2E9E57E-1EF6-4D5F-801D-22E7150CD617} = {AD3CB60B-0F7F-40B3-99C2-7DA4D7451B6A}
+		{DA274451-71A6-4455-8C7C-D73EC3176A91} = {607A326E-58BB-42C3-84E7-037FCAE6773D}
+		{4075E0AE-3CBA-444C-9843-C07445F5B60C} = {607A326E-58BB-42C3-84E7-037FCAE6773D}
+		{E451BF61-55F0-4063-AD65-C85B0B89B8B8} = {607A326E-58BB-42C3-84E7-037FCAE6773D}
+		{A5451A1E-3BA4-4875-950A-ECA5B0002802} = {552AD9A4-7DCE-4505-A913-92C3A0C16495}
+		{E861D061-EE08-48DA-B48C-219437F7C575} = {552AD9A4-7DCE-4505-A913-92C3A0C16495}
+		{ADD62619-8A07-4A11-A715-4B0ADF827DF3} = {607A326E-58BB-42C3-84E7-037FCAE6773D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C53C354-08C1-401D-BECE-9BE26EB9387E}
+	EndGlobalSection
+EndGlobal

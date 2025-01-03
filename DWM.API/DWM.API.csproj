@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonLibrary\TGH.Common.Repository\TGH.Common.Repository.csproj" />
+    <ProjectReference Include="..\DataLayers\DWM.Persistence\DWM.Persistence.csproj" />
+    <ProjectReference Include="..\DWM.BusinessLogic\DWM.BusinessLogic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TGH.Common.Persistence">
+      <HintPath>..\..\CommonLibrary\TGH.Common.Persistence\bin\Debug\netcoreapp3.1\TGH.Common.Persistence.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

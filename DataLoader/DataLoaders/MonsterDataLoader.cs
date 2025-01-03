@@ -137,22 +137,29 @@ namespace DWM.DataLoader.DataLoaders
 				currentMonster.StatGrowth = new List<MonsterGrowth>();
 				currentMonster.NaturalSkills = new List<NaturalSkill>();
 
-				MonsterGrowth xpGrowth =
+				GrowthCategory xpGrowthCategory = _growthCategories.ElementAt(int.Parse(monsterDataPoints[3]));
+				
+					MonsterGrowth xpGrowth =
 					new MonsterGrowth
 					{
 						StatId = Stat.Experience,
-						GrowthCategory = _growthCategories.ElementAt(int.Parse(monsterDataPoints[3]))
+						GrowthCategoryId = xpGrowthCategory.GrowthCategoryId,
+						GrowthCategory = xpGrowthCategory,
+						Monster = currentMonster
 					};
 
 				currentMonster.StatGrowth.Add(xpGrowth);
 
 				for (int i = 7; i <= 12; i++)
 				{
+					GrowthCategory currentStatGrowthCategory = _growthCategories.ElementAt(int.Parse(monsterDataPoints[i]));
 					MonsterGrowth statGrowth =
 						new MonsterGrowth
-						{
+						{ 
 							StatId = STAT_GROWTH_CATEGORIES[i - 7],
-							GrowthCategory = _growthCategories.ElementAt(int.Parse(monsterDataPoints[i]))
+							GrowthCategoryId = currentStatGrowthCategory.GrowthCategoryId,
+							GrowthCategory = currentStatGrowthCategory,
+							Monster = currentMonster
 						};
 
 					currentMonster.StatGrowth.Add(statGrowth);

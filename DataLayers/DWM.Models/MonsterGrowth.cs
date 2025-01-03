@@ -20,6 +20,7 @@ namespace DWM.Models
 
 		#region Navigation Propert(ies)
 		public GrowthCategory GrowthCategory { get; set; }
+		public Monster Monster { get; set; }
 		#endregion
 	}
 }

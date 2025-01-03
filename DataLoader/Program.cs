@@ -25,9 +25,9 @@ string CODE_TABLE_FILEPATH =
 //Info Message(s)
 const string INFO_BEGIN_DB_REBUILD = "Beginning Re-build of Sqlite Database...";
 const string INFO_BEGIN_MEMORY_LOAD = "Loading data into memory...";
-const string INFO_BEGIN_DB_LOAD = "Loading data into Sqlite Database...";
+const string INFO_BEGIN_DB_LOAD = "Loading data into Database...";
 const string INFO_MEMORY_LOAD_SUCCESSFUL = "Successfully loaded data into memory!";
-const string INFO_DB_LOAD_SUCCESSFUL = "Successfully loaded Sqlite Database!";
+const string INFO_DB_LOAD_SUCCESSFUL = "Successfully loaded Database!";
 
 const string EXIT_PROMPT = "Press any key to exit...";
 
@@ -64,10 +64,10 @@ try
 	ConfigureMiddleware();
 	PrepareConsole(args);
 
-	if(_rebuildDatabase)
+	/*if(_rebuildDatabase)
 	{
-		BeginDatabaseRebuild();
-	}
+		BeginSqliteDatabaseRebuild();
+	}*/
 
 	ReadDataIntoMemory();
 	LoadDatabase();
@@ -120,14 +120,8 @@ void ConfigureMiddleware()
 
 	//Register singleton middleware instances for the necessary data layers
 	DependencyManager
-		.RegisterService<IDatabaseContext, DWMBestiaryDbContext>
+		.RegisterService<IDatabaseContext, DWMBestiarySqlServerDbContext>
 		(
-			() =>
-				new DWMBestiaryDbContext
-				(
-					PersistenceConstants.SQLITE_DB_TARGET_FILEPATH,
-					true
-				),
 			ServiceScope.Singleton
 		);
 
@@ -163,7 +157,7 @@ void PrepareConsole(string[] args)
 }
 
 
-void BeginDatabaseRebuild()
+void BeginSqliteDatabaseRebuild()
 {
 	if
 	(
@@ -213,11 +207,13 @@ void LoadDatabase()
 {
 	Logger.LogInfo(INFO_BEGIN_DB_LOAD);
 
-	_skillDataLoader.LoadDataIntoDatabase(_skills);
-	_growthCategoryDataLoader.LoadDataIntoDatabase(_growthCategories);
-	_monsterDataLoader.LoadDataIntoDatabase(_monsters);
-	_monsterLocationDataLoader.LoadDataIntoDatabase(_monsterLocations);
-	_breedingPairDataLoader.LoadDataIntoDatabase(_breedingPairs);
+	_growthCategoryDataLoader.StageDataForInsert(_growthCategories, true);
+	_skillDataLoader.StageDataForInsert(_skills, true);
+	_monsterDataLoader.StageDataForInsert(_monsters, true);
+	_monsterLocationDataLoader.StageDataForInsert(_monsterLocations, true);
+	_breedingPairDataLoader.StageDataForInsert(_breedingPairs, true);
+
+	DependencyManager.ResolveService<IDatabaseContext>().CommitChanges();
 
 	Logger.LogInfo(INFO_DB_LOAD_SUCCESSFUL);
 }

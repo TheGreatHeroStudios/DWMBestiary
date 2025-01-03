@@ -26,6 +26,7 @@ namespace DWM.Models
 		public List<NaturalSkill> NaturalSkills { get; set; }
 		public List<MonsterGrowth> StatGrowth { get; set; }
 		public List<SkillResistance> SkillResistances { get; set; }
+		public List<MonsterLocation> MonsterLocations { get; set; }
 		#endregion
 	}
 }

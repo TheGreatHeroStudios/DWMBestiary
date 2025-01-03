@@ -1,0 +1,18 @@
+.BreedingGuideContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top:20px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.OptionsContainer {
+    display: flex;
+    
+}
+
+.FamilyTreeViewer {
+    border: 2px solid black;
+    margin-top: 10px;
+    max-height: 70vh;
+}

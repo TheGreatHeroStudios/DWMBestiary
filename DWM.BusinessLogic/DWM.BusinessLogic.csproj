@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonLibrary\TGH.Common.Repository\TGH.Common.Repository.csproj" />
+    <ProjectReference Include="..\DataLayers\DWM.Models\DWM.Models.csproj" />
+    <ProjectReference Include="..\DWM.DataTransferObjects\DWM.DataTransferObjects.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TGH.Common.Persistence">
+      <HintPath>..\..\CommonLibrary\TGH.Common.Persistence\bin\Debug\netcoreapp3.1\TGH.Common.Persistence.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

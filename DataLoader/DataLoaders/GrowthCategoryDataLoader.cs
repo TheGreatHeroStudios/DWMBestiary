@@ -76,7 +76,7 @@ namespace DWM.DataLoader.DataLoaders
 			}
 
 			List<GrowthCategory> growthCategories = new List<GrowthCategory>();
-
+			
 			Array
 				.ForEach
 				(
@@ -87,6 +87,7 @@ namespace DWM.DataLoader.DataLoaders
 							(
 								new GrowthCategory
 								{
+									GrowthCategoryId = growthCategories.Count + 1,
 									GrowthStatistics =
 										JsonConvert.SerializeObject(growthCategoryData)
 								}

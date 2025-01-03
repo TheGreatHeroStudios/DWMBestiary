@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace DWM.Persistence
 {
-	internal class DWMBestiaryContextFactory : IDesignTimeDbContextFactory<DWMBestiaryDbContext>
+	internal class DWMBestiaryContextFactory : IDesignTimeDbContextFactory<DWMBestiarySqliteDbContext>
 	{
-		public DWMBestiaryDbContext CreateDbContext(string[] args)
+		public DWMBestiarySqliteDbContext CreateDbContext(string[] args)
 		{
 			//Scaffold the database migration based on the source .db3 file in the project files.
 			return
-				new DWMBestiaryDbContext(PersistenceConstants.SQLITE_TEMPLATE_FILEPATH, true);
+				new DWMBestiarySqliteDbContext(PersistenceConstants.SQLITE_TEMPLATE_FILEPATH, true);
 		}
 	}
 }

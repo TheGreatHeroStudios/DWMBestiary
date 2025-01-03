@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS [C_Family] ([FamilyId] INTEGER NOT NULL CONSTRAINT [PK_C_Family] PRIMARY KEY, [FamilyDescription] NVARCHAR(8) NOT NULL);
+CREATE TABLE [C_Family] ([FamilyId] INTEGER NOT NULL CONSTRAINT [PK_C_Family] PRIMARY KEY, [FamilyDescription] NVARCHAR(8) NOT NULL);
 
 INSERT INTO [C_Family] ([FamilyId], [FamilyDescription]) VALUES (0, 'Slime');
 INSERT INTO [C_Family] ([FamilyId], [FamilyDescription]) VALUES (1, 'Dragon');
@@ -11,14 +11,14 @@ INSERT INTO [C_Family] ([FamilyId], [FamilyDescription]) VALUES (7, 'Zombie');
 INSERT INTO [C_Family] ([FamilyId], [FamilyDescription]) VALUES (8, 'Material');
 INSERT INTO [C_Family] ([FamilyId], [FamilyDescription]) VALUES (9, 'Boss');
 
-CREATE TABLE IF NOT EXISTS [C_GenderProbability] ([GenderProbabilityId] INTEGER NOT NULL CONSTRAINT [PK_C_GenderProbability] PRIMARY KEY, [GenderProbabilityDescription] NVARCHAR(16) NOT NULL);
+CREATE TABLE [C_GenderProbability] ([GenderProbabilityId] INTEGER NOT NULL CONSTRAINT [PK_C_GenderProbability] PRIMARY KEY, [GenderProbabilityDescription] NVARCHAR(16) NOT NULL);
 
 INSERT INTO [C_GenderProbability] ([GenderProbabilityId], [GenderProbabilityDescription]) VALUES (0, 'AlwaysMale');
 INSERT INTO [C_GenderProbability] ([GenderProbabilityId], [GenderProbabilityDescription]) VALUES (1, 'UsuallyMale');
 INSERT INTO [C_GenderProbability] ([GenderProbabilityId], [GenderProbabilityDescription]) VALUES (2, 'EvenDistribution');
 INSERT INTO [C_GenderProbability] ([GenderProbabilityId], [GenderProbabilityDescription]) VALUES (3, 'UsuallyFemale');
 
-CREATE TABLE IF NOT EXISTS [C_MonsterFamily] ([MonsterFamilyId] INTEGER NOT NULL CONSTRAINT [PK_C_MonsterFamily] PRIMARY KEY, [MonsterFamilyDescription] NVARCHAR(8) NOT NULL);
+CREATE TABLE [C_MonsterFamily] ([MonsterFamilyId] INTEGER NOT NULL CONSTRAINT [PK_C_MonsterFamily] PRIMARY KEY, [MonsterFamilyDescription] NVARCHAR(8) NOT NULL);
 
 INSERT INTO [C_MonsterFamily] ([MonsterFamilyId], [MonsterFamilyDescription]) VALUES (0, 'Slime');
 INSERT INTO [C_MonsterFamily] ([MonsterFamilyId], [MonsterFamilyDescription]) VALUES (1, 'Dragon');
@@ -31,7 +31,7 @@ INSERT INTO [C_MonsterFamily] ([MonsterFamilyId], [MonsterFamilyDescription]) VA
 INSERT INTO [C_MonsterFamily] ([MonsterFamilyId], [MonsterFamilyDescription]) VALUES (8, 'Material');
 INSERT INTO [C_MonsterFamily] ([MonsterFamilyId], [MonsterFamilyDescription]) VALUES (9, 'Boss');
 
-CREATE TABLE IF NOT EXISTS [C_SkillClassification] ([SkillClassificationId] INTEGER NOT NULL CONSTRAINT [PK_C_SkillClassification] PRIMARY KEY, [SkillClassificationDescription] NVARCHAR(10) NOT NULL);
+CREATE TABLE [C_SkillClassification] ([SkillClassificationId] INTEGER NOT NULL CONSTRAINT [PK_C_SkillClassification] PRIMARY KEY, [SkillClassificationDescription] NVARCHAR(10) NOT NULL);
 
 INSERT INTO [C_SkillClassification] ([SkillClassificationId], [SkillClassificationDescription]) VALUES (48, 'Attack');
 INSERT INTO [C_SkillClassification] ([SkillClassificationId], [SkillClassificationDescription]) VALUES (49, 'Summons');
@@ -67,7 +67,7 @@ INSERT INTO [C_SkillClassification] ([SkillClassificationId], [SkillClassificati
 INSERT INTO [C_SkillClassification] ([SkillClassificationId], [SkillClassificationDescription]) VALUES (89, 'Allied');
 INSERT INTO [C_SkillClassification] ([SkillClassificationId], [SkillClassificationDescription]) VALUES (90, 'GigaSlash');
 
-CREATE TABLE IF NOT EXISTS [C_Stat] ([StatId] INTEGER NOT NULL CONSTRAINT [PK_C_Stat] PRIMARY KEY, [StatDescription] NVARCHAR(12) NOT NULL);
+CREATE TABLE [C_Stat] ([StatId] INTEGER NOT NULL CONSTRAINT [PK_C_Stat] PRIMARY KEY, [StatDescription] NVARCHAR(12) NOT NULL);
 
 INSERT INTO [C_Stat] ([StatId], [StatDescription]) VALUES (0, 'Level');
 INSERT INTO [C_Stat] ([StatId], [StatDescription]) VALUES (1, 'Experience');
