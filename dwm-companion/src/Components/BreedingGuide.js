@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Autocomplete, TextField, Input, Button } from "@mui/material";
 import { useRef } from 'react';
+import BreedingChecklistPopup from './BreedingChecklistPopup';
 
 const BreedingGuide = 
     () => 
@@ -543,6 +544,7 @@ const BreedingGuide =
 
         return (
             <div className='BreedingGuideContainer'>
+                {/*<BreedingChecklistPopup/>*/}
                 <div className='OptionsContainer'>
                     <Autocomplete options={monsterList} sx={{width:300}}
                         renderInput={(params) => <TextField {...params} label="Target Monster" />}
