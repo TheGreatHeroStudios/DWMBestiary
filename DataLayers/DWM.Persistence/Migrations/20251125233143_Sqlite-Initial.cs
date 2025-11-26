@@ -4,16 +4,19 @@
 
 namespace DWM.Persistence.Migrations
 {
-    public partial class Initial : Migration
+    /// <inheritdoc />
+    public partial class SqliteInitial : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "GrowthCategories",
                 columns: table => new
                 {
-                    GrowthCategoryId = table.Column<int>(type: "int", nullable: false),
-                    GrowthStatistics = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
+                    GrowthCategoryId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    GrowthStatistics = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -24,15 +27,15 @@ namespace DWM.Persistence.Migrations
                 name: "Monsters",
                 columns: table => new
                 {
-                    MonsterId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MonsterName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    FamilyId = table.Column<int>(type: "int", nullable: false),
-                    MaxLevel = table.Column<int>(type: "int", nullable: false),
-                    WildnessLevel = table.Column<int>(type: "int", nullable: false),
-                    GenderProbabilityId = table.Column<int>(type: "int", nullable: false),
-                    IsFlying = table.Column<bool>(type: "bit", nullable: false),
-                    IsMetal = table.Column<bool>(type: "bit", nullable: false)
+                    MonsterId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    MonsterName = table.Column<string>(type: "TEXT", nullable: false),
+                    FamilyId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MaxLevel = table.Column<int>(type: "INTEGER", nullable: false),
+                    WildnessLevel = table.Column<int>(type: "INTEGER", nullable: false),
+                    GenderProbabilityId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsFlying = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsMetal = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,11 +46,11 @@ namespace DWM.Persistence.Migrations
                 name: "Skills",
                 columns: table => new
                 {
-                    SkillId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SkillName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SkillDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SkillClassificationId = table.Column<int>(type: "int", nullable: false)
+                    SkillId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    SkillName = table.Column<string>(type: "TEXT", nullable: false),
+                    SkillDescription = table.Column<string>(type: "TEXT", nullable: false),
+                    SkillClassificationId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,15 +61,15 @@ namespace DWM.Persistence.Migrations
                 name: "BreedingPairs",
                 columns: table => new
                 {
-                    BreedingPairId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OffspringMonsterId = table.Column<int>(type: "int", nullable: false),
-                    OffspringPlusRequirement = table.Column<int>(type: "int", nullable: true),
-                    PedigreeFamilyId = table.Column<int>(type: "int", nullable: true),
-                    PedigreeMonsterId = table.Column<int>(type: "int", nullable: true),
-                    PedigreePlusRequirement = table.Column<int>(type: "int", nullable: true),
-                    PartnerFamilyId = table.Column<int>(type: "int", nullable: true),
-                    PartnerMonsterId = table.Column<int>(type: "int", nullable: true)
+                    BreedingPairId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    OffspringMonsterId = table.Column<int>(type: "INTEGER", nullable: false),
+                    OffspringPlusRequirement = table.Column<int>(type: "INTEGER", nullable: true),
+                    PedigreeFamilyId = table.Column<int>(type: "INTEGER", nullable: true),
+                    PedigreeMonsterId = table.Column<int>(type: "INTEGER", nullable: true),
+                    PedigreePlusRequirement = table.Column<int>(type: "INTEGER", nullable: true),
+                    PartnerFamilyId = table.Column<int>(type: "INTEGER", nullable: true),
+                    PartnerMonsterId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -75,7 +78,8 @@ namespace DWM.Persistence.Migrations
                         name: "FK_BreedingPairs_Monsters_OffspringMonsterId",
                         column: x => x.OffspringMonsterId,
                         principalTable: "Monsters",
-                        principalColumn: "MonsterId");
+                        principalColumn: "MonsterId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_BreedingPairs_Monsters_PartnerMonsterId",
                         column: x => x.PartnerMonsterId,
@@ -92,11 +96,11 @@ namespace DWM.Persistence.Migrations
                 name: "MonsterGrowths",
                 columns: table => new
                 {
-                    MonsterGrowthId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StatId = table.Column<int>(type: "int", nullable: false),
-                    MonsterId = table.Column<int>(type: "int", nullable: false),
-                    GrowthCategoryId = table.Column<int>(type: "int", nullable: false)
+                    MonsterGrowthId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    StatId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MonsterId = table.Column<int>(type: "INTEGER", nullable: false),
+                    GrowthCategoryId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,24 +109,26 @@ namespace DWM.Persistence.Migrations
                         name: "FK_MonsterGrowths_GrowthCategories_GrowthCategoryId",
                         column: x => x.GrowthCategoryId,
                         principalTable: "GrowthCategories",
-                        principalColumn: "GrowthCategoryId");
+                        principalColumn: "GrowthCategoryId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_MonsterGrowths_Monsters_MonsterId",
                         column: x => x.MonsterId,
                         principalTable: "Monsters",
-                        principalColumn: "MonsterId");
+                        principalColumn: "MonsterId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "MonsterLocations",
                 columns: table => new
                 {
-                    MonsterLocationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MonsterId = table.Column<int>(type: "int", nullable: false),
-                    TravelersGateName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    MinLevelEncountered = table.Column<int>(type: "int", nullable: false),
-                    MaxLevelEncountered = table.Column<int>(type: "int", nullable: false)
+                    MonsterLocationId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    MonsterId = table.Column<int>(type: "INTEGER", nullable: false),
+                    TravelersGateName = table.Column<string>(type: "TEXT", nullable: false),
+                    MinLevelEncountered = table.Column<int>(type: "INTEGER", nullable: false),
+                    MaxLevelEncountered = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -131,18 +137,19 @@ namespace DWM.Persistence.Migrations
                         name: "FK_MonsterLocations_Monsters_MonsterId",
                         column: x => x.MonsterId,
                         principalTable: "Monsters",
-                        principalColumn: "MonsterId");
+                        principalColumn: "MonsterId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SkillResistances",
                 columns: table => new
                 {
-                    SkillResistanceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MonsterId = table.Column<int>(type: "int", nullable: false),
-                    SkillClassificationId = table.Column<int>(type: "int", nullable: false),
-                    ResistanceLevel = table.Column<int>(type: "int", nullable: false)
+                    SkillResistanceId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    MonsterId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SkillClassificationId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ResistanceLevel = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -151,17 +158,18 @@ namespace DWM.Persistence.Migrations
                         name: "FK_SkillResistances_Monsters_MonsterId",
                         column: x => x.MonsterId,
                         principalTable: "Monsters",
-                        principalColumn: "MonsterId");
+                        principalColumn: "MonsterId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "NaturalSkills",
                 columns: table => new
                 {
-                    NaturalSkillId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MonsterId = table.Column<int>(type: "int", nullable: false),
-                    SkillId = table.Column<int>(type: "int", nullable: false)
+                    NaturalSkillId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    MonsterId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SkillId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -170,22 +178,24 @@ namespace DWM.Persistence.Migrations
                         name: "FK_NaturalSkills_Monsters_MonsterId",
                         column: x => x.MonsterId,
                         principalTable: "Monsters",
-                        principalColumn: "MonsterId");
+                        principalColumn: "MonsterId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_NaturalSkills_Skills_SkillId",
                         column: x => x.SkillId,
                         principalTable: "Skills",
-                        principalColumn: "SkillId");
+                        principalColumn: "SkillId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SkillComboRequirements",
                 columns: table => new
                 {
-                    SkillComboRequirementId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TargetSkillId = table.Column<int>(type: "int", nullable: false),
-                    RequiredSkillId = table.Column<int>(type: "int", nullable: false)
+                    SkillComboRequirementId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    TargetSkillId = table.Column<int>(type: "INTEGER", nullable: false),
+                    RequiredSkillId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -194,23 +204,25 @@ namespace DWM.Persistence.Migrations
                         name: "FK_SkillComboRequirements_Skills_RequiredSkillId",
                         column: x => x.RequiredSkillId,
                         principalTable: "Skills",
-                        principalColumn: "SkillId");
+                        principalColumn: "SkillId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_SkillComboRequirements_Skills_TargetSkillId",
                         column: x => x.TargetSkillId,
                         principalTable: "Skills",
-                        principalColumn: "SkillId");
+                        principalColumn: "SkillId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SkillStatRequirements",
                 columns: table => new
                 {
-                    SkillStatRequirementId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TargetSkillId = table.Column<int>(type: "int", nullable: false),
-                    StatId = table.Column<int>(type: "int", nullable: false),
-                    RequiredValue = table.Column<int>(type: "int", nullable: false)
+                    SkillStatRequirementId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    TargetSkillId = table.Column<int>(type: "INTEGER", nullable: false),
+                    StatId = table.Column<int>(type: "INTEGER", nullable: false),
+                    RequiredValue = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -219,17 +231,18 @@ namespace DWM.Persistence.Migrations
                         name: "FK_SkillStatRequirements_Skills_TargetSkillId",
                         column: x => x.TargetSkillId,
                         principalTable: "Skills",
-                        principalColumn: "SkillId");
+                        principalColumn: "SkillId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SkillUpgrades",
                 columns: table => new
                 {
-                    SkillUpgradeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BaseSkillId = table.Column<int>(type: "int", nullable: false),
-                    UpgradedSkillId = table.Column<int>(type: "int", nullable: false)
+                    SkillUpgradeId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    BaseSkillId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpgradedSkillId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -238,12 +251,14 @@ namespace DWM.Persistence.Migrations
                         name: "FK_SkillUpgrades_Skills_BaseSkillId",
                         column: x => x.BaseSkillId,
                         principalTable: "Skills",
-                        principalColumn: "SkillId");
+                        principalColumn: "SkillId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_SkillUpgrades_Skills_UpgradedSkillId",
                         column: x => x.UpgradedSkillId,
                         principalTable: "Skills",
-                        principalColumn: "SkillId");
+                        principalColumn: "SkillId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -317,6 +332,7 @@ namespace DWM.Persistence.Migrations
                 column: "UpgradedSkillId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

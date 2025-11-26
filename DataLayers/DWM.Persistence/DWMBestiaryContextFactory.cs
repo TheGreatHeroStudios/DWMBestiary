@@ -11,6 +11,12 @@ namespace DWM.Persistence
 	{
 		public DWMBestiarySqliteDbContext CreateDbContext(string[] args)
 		{
+			//Create the template file if it doesn't already exist
+			if(!File.Exists(PersistenceConstants.SQLITE_TEMPLATE_FILEPATH))
+			{
+				File.Create(PersistenceConstants.SQLITE_TEMPLATE_FILEPATH);
+			}
+
 			//Scaffold the database migration based on the source .db3 file in the project files.
 			return
 				new DWMBestiarySqliteDbContext(PersistenceConstants.SQLITE_TEMPLATE_FILEPATH, true);

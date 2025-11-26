@@ -3,7 +3,6 @@ using System;
 using DWM.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -11,47 +10,42 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DWM.Persistence.Migrations
 {
-    [DbContext(typeof(DWMBestiarySqlServerDbContext))]
-    [Migration("20241224003221_Initial")]
-    partial class Initial
+    [DbContext(typeof(DWMBestiarySqliteDbContext))]
+    [Migration("20251125233143_Sqlite-Initial")]
+    partial class SqliteInitial
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.36")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.12");
 
             modelBuilder.Entity("DWM.Models.BreedingPair", b =>
                 {
                     b.Property<int>("BreedingPairId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BreedingPairId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("OffspringMonsterId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("OffspringPlusRequirement")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("PartnerFamilyId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("PartnerMonsterId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("PedigreeFamilyId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("PedigreeMonsterId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("PedigreePlusRequirement")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("BreedingPairId");
 
@@ -67,12 +61,12 @@ namespace DWM.Persistence.Migrations
             modelBuilder.Entity("DWM.Models.GrowthCategory", b =>
                 {
                     b.Property<int>("GrowthCategoryId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("GrowthStatistics")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("GrowthCategoryId");
 
@@ -83,32 +77,29 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("MonsterId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MonsterId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("FamilyId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("GenderProbabilityId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsFlying")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsMetal")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MaxLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("MonsterName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("WildnessLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("MonsterId");
 
@@ -119,18 +110,16 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("MonsterGrowthId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MonsterGrowthId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("GrowthCategoryId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MonsterId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("StatId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("MonsterGrowthId");
 
@@ -145,23 +134,20 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("MonsterLocationId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MonsterLocationId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MaxLevelEncountered")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MinLevelEncountered")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MonsterId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("TravelersGateName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("MonsterLocationId");
 
@@ -174,15 +160,13 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("NaturalSkillId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NaturalSkillId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MonsterId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SkillId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("NaturalSkillId");
 
@@ -197,20 +181,18 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("SkillId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SkillClassificationId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SkillDescription")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("SkillName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("SkillId");
 
@@ -221,15 +203,13 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("SkillComboRequirementId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillComboRequirementId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("RequiredSkillId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("TargetSkillId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("SkillComboRequirementId");
 
@@ -244,18 +224,16 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("SkillResistanceId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillResistanceId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MonsterId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ResistanceLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SkillClassificationId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("SkillResistanceId");
 
@@ -268,18 +246,16 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("SkillStatRequirementId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillStatRequirementId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("RequiredValue")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("StatId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("TargetSkillId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("SkillStatRequirementId");
 
@@ -292,15 +268,13 @@ namespace DWM.Persistence.Migrations
                 {
                     b.Property<int>("SkillUpgradeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillUpgradeId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("BaseSkillId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("UpgradedSkillId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("SkillUpgradeId");
 
@@ -316,18 +290,16 @@ namespace DWM.Persistence.Migrations
                     b.HasOne("DWM.Models.Monster", "OffspringMonster")
                         .WithMany()
                         .HasForeignKey("OffspringMonsterId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DWM.Models.Monster", "PartnerMonster")
                         .WithMany()
-                        .HasForeignKey("PartnerMonsterId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("PartnerMonsterId");
 
                     b.HasOne("DWM.Models.Monster", "PedigreeMonster")
                         .WithMany()
-                        .HasForeignKey("PedigreeMonsterId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("PedigreeMonsterId");
 
                     b.Navigation("OffspringMonster");
 
@@ -341,13 +313,13 @@ namespace DWM.Persistence.Migrations
                     b.HasOne("DWM.Models.GrowthCategory", "GrowthCategory")
                         .WithMany()
                         .HasForeignKey("GrowthCategoryId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DWM.Models.Monster", "Monster")
                         .WithMany("StatGrowth")
                         .HasForeignKey("MonsterId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("GrowthCategory");
@@ -360,7 +332,7 @@ namespace DWM.Persistence.Migrations
                     b.HasOne("DWM.Models.Monster", "Monster")
                         .WithMany("MonsterLocations")
                         .HasForeignKey("MonsterId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Monster");
@@ -371,13 +343,13 @@ namespace DWM.Persistence.Migrations
                     b.HasOne("DWM.Models.Monster", null)
                         .WithMany("NaturalSkills")
                         .HasForeignKey("MonsterId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DWM.Models.Skill", "Skill")
                         .WithMany()
                         .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Skill");
@@ -388,13 +360,13 @@ namespace DWM.Persistence.Migrations
                     b.HasOne("DWM.Models.Skill", "RequiredSkill")
                         .WithMany()
                         .HasForeignKey("RequiredSkillId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DWM.Models.Skill", "TargetSkill")
                         .WithMany("ComboRequirements")
                         .HasForeignKey("TargetSkillId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("RequiredSkill");
@@ -407,7 +379,7 @@ namespace DWM.Persistence.Migrations
                     b.HasOne("DWM.Models.Monster", null)
                         .WithMany("SkillResistances")
                         .HasForeignKey("MonsterId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -416,7 +388,7 @@ namespace DWM.Persistence.Migrations
                     b.HasOne("DWM.Models.Skill", "TargetSkill")
                         .WithMany("StatRequirements")
                         .HasForeignKey("TargetSkillId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("TargetSkill");
@@ -427,13 +399,13 @@ namespace DWM.Persistence.Migrations
                     b.HasOne("DWM.Models.Skill", "BaseSkill")
                         .WithMany("AvailableUpgrades")
                         .HasForeignKey("BaseSkillId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DWM.Models.Skill", "UpgradedSkill")
                         .WithMany()
                         .HasForeignKey("UpgradedSkillId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BaseSkill");

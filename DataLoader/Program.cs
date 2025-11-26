@@ -120,8 +120,14 @@ void ConfigureMiddleware()
 
 	//Register singleton middleware instances for the necessary data layers
 	DependencyManager
-		.RegisterService<IDatabaseContext, DWMBestiarySqlServerDbContext>
+		.RegisterService<IDatabaseContext, DWMBestiarySqliteDbContext>
 		(
+			() =>
+				new DWMBestiarySqliteDbContext
+				(
+					PersistenceConstants.SQLITE_DB_TARGET_FILEPATH,
+					enableDebugLogging: true
+				),
 			ServiceScope.Singleton
 		);
 
