@@ -8,7 +8,11 @@ using TGH.Common.Repository.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IDatabaseContext, DWMBestiarySqlServerDbContext>();
+builder.Services.AddScoped<IDatabaseContext, DWMBestiarySqliteDbContext>
+(
+	builder => new DWMBestiarySqliteDbContext(PersistenceConstants.SQLITE_DB_TARGET_FILEPATH)
+);
+
 builder.Services.AddScoped<IGenericRepository, GenericRepository>();
 
 //TODO: Add concrete service implementations here:

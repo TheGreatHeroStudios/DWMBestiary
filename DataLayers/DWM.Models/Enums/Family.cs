@@ -8,6 +8,7 @@ namespace DWM.Models.Enums
 {
 	public enum Family
 	{
+		Unknown = -1,
 		Slime,
 		Dragon,
 		Beast,

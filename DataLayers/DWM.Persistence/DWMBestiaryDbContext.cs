@@ -34,6 +34,17 @@ namespace DWM.Persistence
 		public DbSet<SkillUpgrade> SkillUpgrades { get; set; }
 		public DbSet<BreedingPair> BreedingPairs { get; set; }
 		public DbSet<MonsterLocation> MonsterLocations { get; set; }
+		public DbSet<MonsterHierarchy> MonsterHierarchies { get; set; }
+		#endregion
+
+
+
+		#region Overrides
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<MonsterHierarchy>().HasNoKey();
+			base.OnModelCreating(modelBuilder);
+		}
 		#endregion
 	}
 

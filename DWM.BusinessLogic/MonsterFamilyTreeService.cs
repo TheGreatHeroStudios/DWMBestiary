@@ -1,5 +1,6 @@
 ﻿using DWM.DataTransferObjects;
 using DWM.Models;
+using DWM.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,26 @@ namespace DWM.BusinessLogic
 {
 	public class MonsterFamilyTreeService
 	{
-		private const string PROC_NAME = "sprMonsterHierarchy";
+		//private const string PROC_NAME = "sprMonsterHierarchy";
 		private IGenericRepository _repo;
+		private IEnumerable<MonsterHierarchy> _monsterBreedingOptions;
 
 
 		public MonsterFamilyTreeService(IGenericRepository repo)
 		{
 			_repo = repo;
+			_monsterBreedingOptions = BuildBreedingPairOptions();
 		}
 
 
 		public MonsterFamilyTree? GetMonsterFamilyTree(string targetMonsterName, int? maxHierarchyLevels = null)
 		{
-			int validMonsterCount = _repo.GetRecordCount<Monster>(m => m.MonsterName.Equals(targetMonsterName, StringComparison.InvariantCultureIgnoreCase));
+			int validMonsterCount = 
+				_repo
+					.GetRecordCount<Monster>
+					(
+						m => m.MonsterName.Equals(targetMonsterName, StringComparison.InvariantCultureIgnoreCase)
+					);
 
 			if (validMonsterCount <= 0)
 			{
@@ -32,14 +40,14 @@ namespace DWM.BusinessLogic
 				return null;
 			}
 
-			var hierarchyRecords =
-				_repo
+			List<MonsterHierarchy> hierarchyRecords = BuildMonsterHierarchy(targetMonsterName, maxHierarchyLevels ?? 999);
+				/*_repo
 					.RetrieveEntities<MonsterHierarchy>
 					(
 						PROC_NAME,
 						targetMonsterName
 					)
-					.AsEnumerable();
+					.AsEnumerable();*/
 
 			if (!hierarchyRecords.Any())
 			{
@@ -148,6 +156,276 @@ namespace DWM.BusinessLogic
 						MaxHierarchyLevel = maxRecursion + 1,
 						RootNode = disassembledNodes.First()
 					};
+			}
+		}
+
+		
+		private IEnumerable<MonsterHierarchy> BuildBreedingPairOptions()
+		{
+			//Get a single breeding pair for each monster as an 'offspring' (result)
+			//Favor generic combos (families) over specific.
+			var breedingPairs =
+				_repo
+					.RetrieveEntities<BreedingPair>(bp => true)
+					.GroupBy(bp => bp.OffspringMonsterId)           //PARTITION BY
+					.Select
+					(
+						prt =>
+							prt
+								.OrderByDescending(prt => prt.PedigreeFamilyId)
+								.ThenByDescending(prt => prt.PartnerFamilyId)
+								.ThenBy(prt => prt.PedigreeMonsterId)
+								.ThenBy(prt => prt.PartnerMonsterId)
+								.FirstOrDefault()					//Precedence = 1
+					);
+
+			var monsters = _repo.RetrieveEntities<Monster>(bp => true);
+
+			//Get each combination of breeding pair:
+
+			//Family Pedigree; Family Partner (Ideal Leaf Nodes)
+			IEnumerable<MonsterHierarchy> familyFamilyPairs =
+				breedingPairs
+					.Where
+					(
+						bp => 
+							bp?.PedigreeFamilyId != null &&
+							bp?.PartnerFamilyId != null
+					)
+					.Join
+					(
+						monsters,
+						bp => bp?.OffspringMonsterId,
+						off => off.MonsterId,
+						(bp, off) => (bp, off)
+					)
+					.Select
+					(
+						(tuple, off) =>
+							new MonsterHierarchy
+							{
+								OffspringMonsterId = tuple.bp?.OffspringMonsterId ?? -1,
+								OffspringMonsterName = tuple.off.MonsterName,
+								PedigreeType = "Family",
+								PedigreeId = (int)(tuple.bp?.PedigreeFamilyId ?? Family.Unknown),
+								PedigreeName =
+									Enum.GetName(tuple.bp?.PedigreeFamilyId ?? Family.Unknown)!,
+								PartnerType = "Family",
+								PartnerId = (int)(tuple.bp?.PartnerFamilyId ?? Family.Unknown),
+								PartnerName =
+									Enum.GetName(tuple.bp?.PartnerFamilyId ?? Family.Unknown)!
+							}
+					);
+
+			//Monster Pedigree; Monster Partner
+			IEnumerable<MonsterHierarchy> monsterMonsterPairs =
+				breedingPairs
+					.Where
+					(
+						bp =>
+							bp?.PedigreeMonsterId != null &&
+							bp?.PartnerMonsterId != null
+					)
+					.Join
+					(
+						monsters,
+						bp => bp?.OffspringMonsterId,
+						off => off.MonsterId,
+						(bp, off) => (bp, off)
+					)
+					.Join
+					(
+						monsters,
+						tuple => tuple.bp?.PedigreeMonsterId ?? -1,
+						ped => ped.MonsterId,
+						(tuple, ped) => (tuple.bp, tuple.off, ped)
+					)
+					.Join
+					(
+						monsters,
+						tuple => tuple.bp?.PartnerMonsterId ?? -1,
+						prt => prt.MonsterId,
+						(tuple, prt) => (tuple.bp, tuple.off, tuple.ped, prt)
+					)
+					.Select
+					(
+						tuple =>
+							new MonsterHierarchy
+							{
+								OffspringMonsterId = tuple.off.MonsterId,
+								OffspringMonsterName = tuple.off.MonsterName,
+								PedigreeType = "Monster",
+								PedigreeId = tuple.ped.MonsterId,
+								PedigreeName = tuple.ped.MonsterName,
+								PartnerType = "Monster",
+								PartnerId = tuple.prt.MonsterId,
+								PartnerName = tuple.prt.MonsterName
+							}
+					);
+
+			//Monster Pedigree; Family Partner
+			IEnumerable<MonsterHierarchy> monsterFamilyPairs =
+				breedingPairs
+					.Where
+					(
+						bp =>
+							bp?.PedigreeMonsterId != null &&
+							bp?.PartnerFamilyId != null
+					)
+					.Join
+					(
+						monsters,
+						bp => bp?.OffspringMonsterId,
+						off => off.MonsterId,
+						(bp, off) => (bp, off)
+					)
+					.Join
+					(
+						monsters,
+						tuple => tuple.bp?.PedigreeMonsterId ?? -1,
+						ped => ped.MonsterId,
+						(tuple, ped) => (tuple.bp, tuple.off, ped)
+					)
+					.Select
+					(
+						tuple =>
+							new MonsterHierarchy
+							{
+								OffspringMonsterId = tuple.off.MonsterId,
+								OffspringMonsterName = tuple.off.MonsterName,
+								PedigreeType = "Monster",
+								PedigreeId = tuple.ped.MonsterId,
+								PedigreeName = tuple.ped.MonsterName,
+								PartnerType = "Family",
+								PartnerId = (int)(tuple.bp?.PartnerFamilyId ?? Family.Unknown),
+								PartnerName =
+									Enum.GetName(tuple.bp?.PartnerFamilyId ?? Family.Unknown)!
+							}
+					);
+
+			//Family Pedigree; Monster Partner
+			IEnumerable<MonsterHierarchy> familyMonsterPairs =
+				breedingPairs
+					.Where
+					(
+						bp =>
+							bp?.PedigreeFamilyId != null &&
+							bp?.PartnerMonsterId != null
+					)
+					.Join
+					(
+						monsters,
+						bp => bp?.OffspringMonsterId,
+						off => off.MonsterId,
+						(bp, off) => (bp, off)
+					)
+					.Join
+					(
+						monsters,
+						tuple => tuple.bp?.PartnerMonsterId ?? -1,
+						prt => prt.MonsterId,
+						(tuple, prt) => (tuple.bp, tuple.off, prt)
+					)
+					.Select
+					(
+						tuple =>
+							new MonsterHierarchy
+							{
+								OffspringMonsterId = tuple.off.MonsterId,
+								OffspringMonsterName = tuple.off.MonsterName,
+								PedigreeType = "Family",
+								PedigreeId = (int)(tuple.bp?.PedigreeFamilyId ?? Family.Unknown),
+								PedigreeName = Enum.GetName(tuple.bp?.PedigreeFamilyId ?? Family.Unknown)!,
+								PartnerType = "Monster",
+								PartnerId = tuple.prt.MonsterId,
+								PartnerName = tuple.prt.MonsterName
+							}
+					);
+
+			return 
+				familyFamilyPairs
+					.Union(monsterMonsterPairs)
+					.Union(monsterFamilyPairs)
+					.Union(familyMonsterPairs);
+		}
+
+
+		private List<MonsterHierarchy> BuildMonsterHierarchy(string targetMonsterName, int? maxHierarchyLevels = 999)
+		{
+			List<MonsterHierarchy> monsterHierarchy = new List<MonsterHierarchy>(); 
+
+			MonsterHierarchy? rootNode =
+				_monsterBreedingOptions
+					.FirstOrDefault
+					(
+						option =>
+							option.OffspringMonsterName.Equals(targetMonsterName, StringComparison.InvariantCultureIgnoreCase)
+					);
+
+			if (rootNode != null)
+			{
+				rootNode.HierarchyLevel = 1;
+				rootNode.NodeOrdinal = 1;
+				rootNode.RecordType = "Target Monster";
+				rootNode.ParentHierarchyKey = null;
+				rootNode.HierarchyKey = rootNode.OffspringMonsterId.ToString();
+
+				monsterHierarchy.Add(rootNode);
+				BuildParentNodes(monsterHierarchy, rootNode, maxHierarchyLevels);
+			}
+
+			return monsterHierarchy;
+		}
+
+
+		private void BuildParentNodes(List<MonsterHierarchy> currentTree, MonsterHierarchy offspring, int? maxHierarchyLevels = 999)
+		{
+			//Only continue building nodes until the pedigree and partner are both of type 'Family'
+			//(or until the specified max lever of recursion has been reached)
+			if (offspring.PedigreeType == "Monster" && offspring.HierarchyLevel < maxHierarchyLevels)
+			{
+				MonsterHierarchy? pedigree =
+					_monsterBreedingOptions
+						.FirstOrDefault
+						(
+							option =>
+								option.OffspringMonsterId == offspring.PedigreeId
+						);
+
+				if (pedigree != null)
+				{
+					pedigree.HierarchyLevel = offspring.HierarchyLevel + 1;
+					pedigree.NodeOrdinal = ((offspring.NodeOrdinal - 1) * 2) + 1;
+					pedigree.RecordType = "Pedigree";
+					pedigree.ParentHierarchyKey = offspring.HierarchyKey;
+					pedigree.HierarchyKey = $"{offspring.HierarchyKey}/{offspring.PedigreeId}-{pedigree.NodeOrdinal}";
+
+					currentTree.Add(pedigree);
+					BuildParentNodes(currentTree, pedigree, maxHierarchyLevels);
+				}
+			}
+
+			if (offspring.PartnerType == "Monster" && offspring.HierarchyLevel < maxHierarchyLevels)
+			{
+				MonsterHierarchy? partner =
+					_monsterBreedingOptions
+						.FirstOrDefault
+						(
+							option =>
+								option.OffspringMonsterId == offspring.PartnerId
+						);
+
+				if (partner != null)
+				{
+					partner.HierarchyLevel = offspring.HierarchyLevel + 1;
+					partner.NodeOrdinal = ((offspring.NodeOrdinal - 1) * 2) + 2;
+					partner.RecordType = "Partner";
+					partner.ParentHierarchyKey = offspring.HierarchyKey;
+					partner.HierarchyKey = $"{offspring.HierarchyKey}/{offspring.PartnerId}-{partner.NodeOrdinal}";
+
+					currentTree.Add(partner);
+					BuildParentNodes(currentTree, partner, maxHierarchyLevels);
+				}
 			}
 		}
 	}
